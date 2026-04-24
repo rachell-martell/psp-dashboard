@@ -21,14 +21,13 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:#1C1B18;background:#FAFAF9
 .page{max-width:960px;margin:0 auto;padding:1.2rem;}
 .view{display:none;}.view.on{display:block;}
 .sec{font-family:'DM Serif Display',serif;font-size:.95rem;font-weight:400;margin:1.2rem 0 8px;}
+/* CEO */
 .countdown{background:white;border:1px solid #E5E3DE;border-radius:10px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
 .cd-label{font-size:10px;color:#9E9B94;margin-bottom:2px;}
 .cd-val{font-size:22px;font-weight:300;color:#C9547A;}
 .snap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;}
 .snap{background:white;border:1px solid #E5E3DE;border-radius:10px;padding:14px 16px;}
-.snap.tg{border-color:#1A8A6E;border-width:2px;}
-.snap.ag{border-color:#E09A30;border-width:2px;}
-.snap.rg{border-color:#B83232;border-width:2px;}
+.snap.tg{border-color:#1A8A6E;border-width:2px;}.snap.ag{border-color:#E09A30;border-width:2px;}.snap.rg{border-color:#B83232;border-width:2px;}
 .snap-label{font-size:10px;color:#9E9B94;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
 .snap-val{font-size:26px;font-weight:300;line-height:1;}
 .snap-val.g{color:#1A8A6E;}.snap-val.a{color:#C47A1A;}.snap-val.r{color:#B83232;}
@@ -44,6 +43,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:#1C1B18;background:#FAFAF9
 .chart-card{background:white;border:1px solid #E5E3DE;border-radius:10px;padding:14px 16px;margin-bottom:10px;}
 .chart-title{font-size:12px;font-weight:500;margin-bottom:10px;}
 .chart-wrap{position:relative;height:160px;}
+/* TEAM INPUT */
+.team-tabs{display:flex;gap:6px;margin-bottom:1rem;}
+.team-tab{padding:6px 14px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid #E5E3DE;background:white;color:#9E9B94;}
+.team-tab.on{background:#1C1B18;color:white;border-color:#1C1B18;}
+.tview{display:none;}.tview.on{display:block;}
 .isec{background:white;border:1px solid #E5E3DE;border-radius:10px;margin-bottom:10px;overflow:hidden;}
 .isec-head{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;border-bottom:1px solid #F3F2EF;cursor:pointer;}
 .isec-name{font-size:13px;font-weight:500;}
@@ -62,13 +66,29 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:#1C1B18;background:#FAFAF9
 .mst{font-size:16px;text-align:center;padding-top:3px;}
 .sb{padding:8px 12px;border-radius:7px;font-size:12px;margin-bottom:10px;display:none;}
 .sb.on{display:block;}
-.sb.ok{background:#E0F4EE;color:#1A8A6E;}
-.sb.err{background:#FCEAEA;color:#B83232;}
-.sb.ld{background:#FDF0DC;color:#C47A1A;}
+.sb.ok{background:#E0F4EE;color:#1A8A6E;}.sb.err{background:#FCEAEA;color:#B83232;}.sb.ld{background:#FDF0DC;color:#C47A1A;}
 .wknote{font-size:11px;color:#9E9B94;text-align:center;margin-bottom:10px;}
 .action-row{display:flex;gap:8px;margin-top:12px;}
 .btn-sv{padding:8px 18px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid #E5E3DE;background:white;color:#1C1B18;}
 .btn-sl{padding:8px 18px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:#C9547A;color:white;}
+.btn-submit{padding:8px 20px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:#1A8A6E;color:white;}
+/* COMPARISON TABLE */
+.comp-table{width:100%;border-collapse:collapse;background:white;border-radius:10px;overflow:hidden;border:1px solid #E5E3DE;margin-bottom:1rem;}
+.comp-table th{font-size:10px;color:#9E9B94;text-transform:uppercase;letter-spacing:.05em;padding:10px 14px;background:#FAFAF9;border-bottom:1px solid #E5E3DE;text-align:left;}
+.comp-table td{font-size:12px;padding:9px 14px;border-bottom:1px solid #F3F2EF;color:#1C1B18;}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table .section-row td{background:#F3F2EF;font-weight:500;font-size:11px;color:#9E9B94;text-transform:uppercase;letter-spacing:.05em;padding:6px 14px;}
+.ch-pos{color:#1A8A6E;font-weight:500;}.ch-neg{color:#B83232;font-weight:500;}.ch-neu{color:#9E9B94;}
+/* ARCHIVE */
+.arch-list{display:flex;flex-direction:column;gap:8px;margin-bottom:1rem;}
+.arch-item{background:white;border:1px solid #E5E3DE;border-radius:10px;padding:12px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.arch-item:hover{border-color:#C9547A;}
+.arch-week{font-size:13px;font-weight:500;}
+.arch-meta{font-size:11px;color:#9E9B94;}
+.arch-detail{background:white;border:1px solid #E5E3DE;border-radius:10px;padding:16px;margin-bottom:1rem;display:none;}
+.arch-detail.on{display:block;}
+.arch-back{font-size:12px;color:#C9547A;cursor:pointer;margin-bottom:12px;display:inline-block;}
+.empty-state{text-align:center;padding:3rem 1rem;color:#9E9B94;font-size:13px;}
 </style>
 </head>
 <body>
@@ -79,13 +99,14 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:#1C1B18;background:#FAFAF9
   </div>
   <div class="tabs">
     <button class="tab on" onclick="sw('ceo',this)">CEO view</button>
-    <button class="tab" onclick="sw('team',this)">Team input</button>
+    <button class="tab" onclick="sw('team',this)">Team</button>
   </div>
   <button class="copy-btn" id="copyBtn" onclick="copyForSlack()">Copy for Slack</button>
 </div>
 
 <div class="page">
 
+<!-- CEO VIEW - UNCHANGED -->
 <div class="view on" id="view-ceo">
   <div class="countdown">
     <div><p class="cd-label">Event date</p><p style="font-size:13px;font-weight:500;">July 9-10, 2026 - Kelowna</p></div>
@@ -111,120 +132,408 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:#1C1B18;background:#FAFAF9
   </div>
 </div>
 
+<!-- TEAM VIEW -->
 <div class="view" id="view-team">
-  <div class="wknote" id="wkNote"></div>
+  <div class="team-tabs">
+    <button class="team-tab on" onclick="swTeam('input',this)">This week input</button>
+    <button class="team-tab" onclick="swTeam('compare',this)">This week vs last week</button>
+    <button class="team-tab" onclick="swTeam('archive',this)">Archive</button>
+  </div>
   <div class="sb" id="sb"></div>
 
-  <div class="isec">
-    <div class="isec-head" onclick="tog('rev')"><span class="isec-name">Revenue</span><span class="owner-pill">Eric Larocque</span></div>
-    <div class="isec-body" id="sec-rev">
-      <div class="col-hd"><div class="col-h">Metric / how we measure</div><div class="col-h">Target</div><div class="col-h">This week</div><div class="col-h">Status</div></div>
-      <div class="mrow"><div><p class="mname">Rise tickets sold</p><p class="mhow">Ticket platform sales report (cumulative)</p></div><div class="mtarget">20.6/wk</div><div class="minput"><input type="number" id="f_rise" placeholder="89" oninput="cs(this,20.6);ct()"></div><div class="mst" id="s_rise">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Thrive tickets sold</p><p class="mhow">Ticket platform sales report (cumulative)</p></div><div class="mtarget">4.9/wk</div><div class="minput"><input type="number" id="f_thrive" placeholder="40" oninput="cs(this,4.9);ct()"></div><div class="mst" id="s_thrive">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Total tickets (auto)</p><p class="mhow">Rise + Thrive combined</p></div><div class="mtarget">450</div><div class="minput"><input type="number" id="f_tickets" class="ro" readonly></div><div class="mst" id="s_tickets">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Weekly ticket sales velocity</p><p class="mhow">Tickets sold per week vs pace needed to reach 450 by July 9</p></div><div class="mtarget">38/wk</div><div class="minput"><input type="number" id="f_vel" placeholder="0" oninput="cs(this,38)"></div><div class="mst" id="s_vel">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Conversations (qualified)</p><p class="mhow">Chat audit scorecard (Eric)</p></div><div class="mtarget">10/day</div><div class="minput"><input type="number" id="f_convos" placeholder="0" oninput="cs(this,10)"></div><div class="mst" id="s_convos">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Conversation to ticket conversion</p><p class="mhow">Chat audit scorecard (Eric)</p></div><div class="mtarget">TBD</div><div class="minput"><input type="text" id="f_convrate" placeholder="e.g. 12%"></div><div class="mst">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">LinkedIn conversions (1:1 outreach)</p><p class="mhow">Conversion rate from LinkedIn DM outreach</p></div><div class="mtarget">TBD</div><div class="minput"><input type="text" id="f_linkedin" placeholder="e.g. 5%"></div><div class="mst">&#9898;</div></div>
+  <!-- INPUT TAB -->
+  <div class="tview on" id="tview-input">
+    <div class="wknote" id="wkNote"></div>
+
+    <div class="isec">
+      <div class="isec-head" onclick="tog('rev')"><span class="isec-name">Revenue</span><span class="owner-pill">Eric Larocque</span></div>
+      <div class="isec-body" id="sec-rev">
+        <div class="col-hd"><div class="col-h">Metric / how we measure</div><div class="col-h">Target</div><div class="col-h">This week</div><div class="col-h">Status</div></div>
+        <div class="mrow"><div><p class="mname">Rise tickets sold</p><p class="mhow">Ticket platform sales report (cumulative)</p></div><div class="mtarget">20.6/wk</div><div class="minput"><input type="number" id="f_rise" placeholder="89" oninput="cs(this,20.6);ct()"></div><div class="mst" id="s_rise">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Thrive tickets sold</p><p class="mhow">Ticket platform sales report (cumulative)</p></div><div class="mtarget">4.9/wk</div><div class="minput"><input type="number" id="f_thrive" placeholder="40" oninput="cs(this,4.9);ct()"></div><div class="mst" id="s_thrive">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Total tickets (auto)</p><p class="mhow">Rise + Thrive combined</p></div><div class="mtarget">450</div><div class="minput"><input type="number" id="f_tickets" class="ro" readonly></div><div class="mst" id="s_tickets">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Weekly ticket sales velocity</p><p class="mhow">Tickets sold per week vs pace needed to reach 450 by July 9</p></div><div class="mtarget">38/wk</div><div class="minput"><input type="number" id="f_vel" placeholder="0" oninput="cs(this,38)"></div><div class="mst" id="s_vel">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Conversations (qualified)</p><p class="mhow">Chat audit scorecard (Eric)</p></div><div class="mtarget">10/day</div><div class="minput"><input type="number" id="f_convos" placeholder="0" oninput="cs(this,10)"></div><div class="mst" id="s_convos">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Conversation to ticket conversion</p><p class="mhow">Chat audit scorecard (Eric)</p></div><div class="mtarget">TBD</div><div class="minput"><input type="text" id="f_convrate" placeholder="e.g. 12%"></div><div class="mst">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">LinkedIn conversions (1:1 outreach)</p><p class="mhow">Conversion rate from LinkedIn DM outreach</p></div><div class="mtarget">TBD</div><div class="minput"><input type="text" id="f_linkedin" placeholder="e.g. 5%"></div><div class="mst">&#9898;</div></div>
+      </div>
+    </div>
+
+    <div class="isec">
+      <div class="isec-head" onclick="tog('sp')"><span class="isec-name">Sponsors</span><span class="owner-pill">Anita Guerini</span></div>
+      <div class="isec-body" id="sec-sp">
+        <div class="col-hd"><div class="col-h">Metric / how we measure</div><div class="col-h">Target</div><div class="col-h">This week</div><div class="col-h">Status</div></div>
+        <div class="mrow"><div><p class="mname">Sponsorship closed (cumulative)</p><p class="mhow">Signed agreements / payment received</p></div><div class="mtarget">$225,000</div><div class="minput"><input type="number" id="f_sponsor" placeholder="65378" oninput="cs(this,225000)"></div><div class="mst" id="s_sponsor">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Active sponsor conversations</p><p class="mhow">Pipeline tracker - title + silver tiers unfilled</p></div><div class="mtarget">$100,000</div><div class="minput"><input type="number" id="f_spc" placeholder="0" oninput="cs(this,100000)"></div><div class="mst" id="s_spc">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Proposals closed rate</p><p class="mhow">Of proposals sent, how many closed</p></div><div class="mtarget">20%</div><div class="minput"><input type="text" id="f_closerate" placeholder="e.g. 15%"></div><div class="mst">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Proposals sent</p><p class="mhow">Pipeline tracker</p></div><div class="mtarget">30/wk</div><div class="minput"><input type="number" id="f_proposals" placeholder="0" oninput="cs(this,30)"></div><div class="mst" id="s_proposals">&#9898;</div></div>
+      </div>
+    </div>
+
+    <div class="isec">
+      <div class="isec-head" onclick="tog('mkt')"><span class="isec-name">Marketing</span><span class="owner-pill">Dayna Dorssers</span></div>
+      <div class="isec-body" id="sec-mkt">
+        <div class="col-hd"><div class="col-h">Metric / how we measure</div><div class="col-h">Target</div><div class="col-h">This week</div><div class="col-h">Status</div></div>
+        <div class="mrow"><div><p class="mname">DMs / inquiries received</p><p class="mhow">All IG DMs combined. Keyword: SUMMIT. Source: Revio via Moira.</p></div><div class="mtarget">100/wk</div><div class="minput"><input type="number" id="f_inq" placeholder="0" oninput="cs(this,100)"></div><div class="mst" id="s_inq">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Ads - DMs generated (all)</p><p class="mhow">All ad-generated DMs (cold + retargeting). Source: Spreadsheet.</p></div><div class="mtarget">300/wk</div><div class="minput"><input type="number" id="f_dms" placeholder="181" oninput="cs(this,300)"></div><div class="mst" id="s_dms">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">RW's IG - DMs generated (all)</p><p class="mhow">Hand raiser DM replies from IG stories. Source: Revio via Moira.</p></div><div class="mtarget">25/wk</div><div class="minput"><input type="number" id="f_rwdms" placeholder="0" oninput="cs(this,25)"></div><div class="mst" id="s_rwdms">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Website conversion rate</p><p class="mhow">All traffic + conversion rate. Source: Squarespace analytics.</p></div><div class="mtarget">10%</div><div class="minput"><input type="text" id="f_lpc" placeholder="e.g. 1.2%"></div><div class="mst">&#9898;</div></div>
+        <div class="mrow" style="background:#FAFAF9;border-radius:8px;padding:10px 8px;"><div colspan="4"><p class="mname" style="margin-bottom:8px;">Tickets sold by channel</p><p class="mhow" style="margin-bottom:10px;">Source: Squarespace + Revio/Moira. Set your own targets below.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+            <div><p style="font-size:10px;color:#9E9B94;margin-bottom:4px;">Email — target/wk</p><input type="number" id="f_ch_email_tgt" placeholder="e.g. 8" style="width:100%;padding:5px 8px;border:1px solid #E5E3DE;border-radius:6px;font-size:12px;background:#fff;"></div>
+            <div><p style="font-size:10px;color:#9E9B94;margin-bottom:4px;">Email — this week</p><input type="number" id="f_ch_email" placeholder="0" style="width:100%;padding:5px 8px;border:1px solid #E5E3DE;border-radius:6px;font-size:12px;background:#fff;" oninput="csChannel('f_ch_email','f_ch_email_tgt','s_ch_email')"></div>
+            <div style="display:flex;align-items:flex-end;padding-bottom:2px;"><span id="s_ch_email" style="font-size:16px;">&#9898;</span></div>
+            <div><p style="font-size:10px;color:#9E9B94;margin-bottom:4px;">Direct — target/wk</p><input type="number" id="f_ch_direct_tgt" placeholder="e.g. 5" style="width:100%;padding:5px 8px;border:1px solid #E5E3DE;border-radius:6px;font-size:12px;background:#fff;"></div>
+            <div><p style="font-size:10px;color:#9E9B94;margin-bottom:4px;">Direct — this week</p><input type="number" id="f_ch_direct" placeholder="0" style="width:100%;padding:5px 8px;border:1px solid #E5E3DE;border-radius:6px;font-size:12px;background:#fff;" oninput="csChannel('f_ch_direct','f_ch_direct_tgt','s_ch_direct')"></div>
+            <div style="display:flex;align-items:flex-end;padding-bottom:2px;"><span id="s_ch_direct" style="font-size:16px;">&#9898;</span></div>
+            <div><p style="font-size:10px;color:#9E9B94;margin-bottom:4px;">Instagram — target/wk</p><input type="number" id="f_ch_ig_tgt" placeholder="e.g. 13" style="width:100%;padding:5px 8px;border:1px solid #E5E3DE;border-radius:6px;font-size:12px;background:#fff;"></div>
+            <div><p style="font-size:10px;color:#9E9B94;margin-bottom:4px;">Instagram — this week</p><input type="number" id="f_ch_ig" placeholder="0" style="width:100%;padding:5px 8px;border:1px solid #E5E3DE;border-radius:6px;font-size:12px;background:#fff;" oninput="csChannel('f_ch_ig','f_ch_ig_tgt','s_ch_ig')"></div>
+            <div style="display:flex;align-items:flex-end;padding-bottom:2px;"><span id="s_ch_ig" style="font-size:16px;">&#9898;</span></div>
+          </div>
+        </div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+
+    <div class="isec">
+      <div class="isec-head" onclick="tog('pl')"><span class="isec-name">P&L</span><span class="owner-pill">Rachel Dye</span></div>
+      <div class="isec-body" id="sec-pl">
+        <div class="col-hd"><div class="col-h">Metric / how we measure</div><div class="col-h">Target</div><div class="col-h">This week</div><div class="col-h">Status</div></div>
+        <div class="mrow"><div><p class="mname">Total revenue</p><p class="mhow">Revenue dashboard - tickets + sponsorship + vendors</p></div><div class="mtarget">$799,403</div><div class="minput"><input type="number" id="f_rev" placeholder="247844" oninput="cs(this,799403)"></div><div class="mst" id="s_rev">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">NOI %</p><p class="mhow">NOI / total revenue</p></div><div class="mtarget">70%</div><div class="minput"><input type="text" id="f_noi" placeholder="2%"></div><div class="mst" id="s_noi">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Costs (locked)</p><p class="mhow">Locked budget / finance sheet</p></div><div class="mtarget">$242,915</div><div class="minput"><input type="number" id="f_costs" placeholder="242915"></div><div class="mst">&#9898;</div></div>
+        <div class="mrow"><div><p class="mname">Breakeven status</p><p class="mhow">Revenue minus locked costs</p></div><div class="mtarget">$0</div><div class="minput"><input type="number" id="f_profit" placeholder="-2358"></div><div class="mst" id="s_profit">&#9898;</div></div>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button class="btn-sv" onclick="saveRef()">Save & refresh CEO view</button>
+      <button class="btn-submit" onclick="submitWeek()">Submit week</button>
+      <button class="btn-sl" onclick="copyForSlack()">Copy for Slack</button>
     </div>
   </div>
 
-  <div class="isec">
-    <div class="isec-head" onclick="tog('sp')"><span class="isec-name">Sponsors</span><span class="owner-pill">Anita Guerini</span></div>
-    <div class="isec-body" id="sec-sp">
-      <div class="col-hd"><div class="col-h">Metric / how we measure</div><div class="col-h">Target</div><div class="col-h">This week</div><div class="col-h">Status</div></div>
-      <div class="mrow"><div><p class="mname">Sponsorship closed (cumulative)</p><p class="mhow">Signed agreements / payment received</p></div><div class="mtarget">$225,000</div><div class="minput"><input type="number" id="f_sponsor" placeholder="65378" oninput="cs(this,225000)"></div><div class="mst" id="s_sponsor">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Active sponsor conversations</p><p class="mhow">Pipeline tracker - title + silver tiers unfilled</p></div><div class="mtarget">$100,000</div><div class="minput"><input type="number" id="f_spc" placeholder="0" oninput="cs(this,100000)"></div><div class="mst" id="s_spc">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Proposals closed rate</p><p class="mhow">Of proposals sent, how many closed</p></div><div class="mtarget">20%</div><div class="minput"><input type="text" id="f_closerate" placeholder="e.g. 15%"></div><div class="mst">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Proposals sent</p><p class="mhow">Pipeline tracker</p></div><div class="mtarget">30/wk</div><div class="minput"><input type="number" id="f_proposals" placeholder="0" oninput="cs(this,30)"></div><div class="mst" id="s_proposals">&#9898;</div></div>
-    </div>
+  <!-- COMPARE TAB -->
+  <div class="tview" id="tview-compare">
+    <div id="compareContent"></div>
   </div>
 
-  <div class="isec">
-    <div class="isec-head" onclick="tog('mkt')"><span class="isec-name">Marketing</span><span class="owner-pill">Dayna Dorssers</span></div>
-    <div class="isec-body" id="sec-mkt">
-      <div class="col-hd"><div class="col-h">Metric / how we measure</div><div class="col-h">Target</div><div class="col-h">This week</div><div class="col-h">Status</div></div>
-      <div class="mrow"><div><p class="mname">DMs / inquiries received</p><p class="mhow">All IG DMs combined (ads + hand raisers + organic). Keyword: SUMMIT. Source: Revio via Moira.</p></div><div class="mtarget">100/wk</div><div class="minput"><input type="number" id="f_inq" placeholder="0" oninput="cs(this,100)"></div><div class="mst" id="s_inq">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Email - link clicks</p><p class="mhow">Kit broadcast click report (PSP campaign emails only, not newsletter)</p></div><div class="mtarget">125/send</div><div class="minput"><input type="number" id="f_email" placeholder="90" oninput="cs(this,125)"></div><div class="mst" id="s_email">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Ads - DMs generated (all)</p><p class="mhow">All ad-generated DMs (cold + retargeting). Source: Spreadsheet.</p></div><div class="mtarget">300/wk</div><div class="minput"><input type="number" id="f_dms" placeholder="181" oninput="cs(this,300)"></div><div class="mst" id="s_dms">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">RW's IG - DMs generated (all)</p><p class="mhow">Hand raiser DM replies from IG stories (keyword SUMMIT). Source: Revio via Moira.</p></div><div class="mtarget">25/wk</div><div class="minput"><input type="number" id="f_rwdms" placeholder="0" oninput="cs(this,25)"></div><div class="mst" id="s_rwdms">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Ticket page traffic</p><p class="mhow">Visits to pinkskirt.com/summit2026. Source: Squarespace analytics.</p></div><div class="mtarget">425/wk</div><div class="minput"><input type="number" id="f_traffic" placeholder="1818" oninput="cs(this,425)"></div><div class="mst" id="s_traffic">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Tickets sold by channel</p><p class="mhow">Weekly sales by source. Source: Squarespace + Revio/Moira.</p></div><div class="mtarget">26/wk</div><div class="minput"><input type="number" id="f_bych" placeholder="17" oninput="cs(this,26)"></div><div class="mst" id="s_bych">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Landing page conversion</p><p class="mhow">/summit2026 page visits vs purchases. Source: Squarespace analytics.</p></div><div class="mtarget">10%</div><div class="minput"><input type="text" id="f_lpc" placeholder="0.69%"></div><div class="mst">&#9898;</div></div>
-    </div>
-  </div>
-
-  <div class="isec">
-    <div class="isec-head" onclick="tog('pl')"><span class="isec-name">P&L</span><span class="owner-pill">Rachel Dye</span></div>
-    <div class="isec-body" id="sec-pl">
-      <div class="col-hd"><div class="col-h">Metric / how we measure</div><div class="col-h">Target</div><div class="col-h">This week</div><div class="col-h">Status</div></div>
-      <div class="mrow"><div><p class="mname">Total revenue</p><p class="mhow">Revenue dashboard - tickets + sponsorship + vendors</p></div><div class="mtarget">$799,403</div><div class="minput"><input type="number" id="f_rev" placeholder="247844" oninput="cs(this,799403)"></div><div class="mst" id="s_rev">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">NOI %</p><p class="mhow">NOI / total revenue</p></div><div class="mtarget">70%</div><div class="minput"><input type="text" id="f_noi" placeholder="2%"></div><div class="mst" id="s_noi">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Costs (locked)</p><p class="mhow">Locked budget / finance sheet</p></div><div class="mtarget">$242,915</div><div class="minput"><input type="number" id="f_costs" placeholder="242915"></div><div class="mst">&#9898;</div></div>
-      <div class="mrow"><div><p class="mname">Breakeven status</p><p class="mhow">Revenue minus locked costs</p></div><div class="mtarget">$0</div><div class="minput"><input type="number" id="f_profit" placeholder="-2358"></div><div class="mst" id="s_profit">&#9898;</div></div>
-    </div>
-  </div>
-
-  <div class="action-row">
-    <button class="btn-sv" onclick="saveRef()">Save & refresh CEO view</button>
-    <button class="btn-sl" onclick="copyForSlack()">Copy for Slack</button>
+  <!-- ARCHIVE TAB -->
+  <div class="tview" id="tview-archive">
+    <div id="archiveList"></div>
+    <div id="archiveDetail"></div>
   </div>
 </div>
 
 </div>
 
 <script>
+const SLACK='https://hooks.slack.com/services/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';
+const STORAGE_KEY='psp_weeks_v1';
+
 const hist=[
-  {wk:'Feb 16',rise:32,thrive:14,sp:47503,noi:-8,rev:174000,dms:0},
-  {wk:'Feb 23',rise:41,thrive:18,sp:47503,noi:-7,rev:185000,dms:0},
-  {wk:'Mar 2', rise:49,thrive:20,sp:47503,noi:-6,rev:196000,dms:220},
-  {wk:'Mar 9', rise:55,thrive:22,sp:55378,noi:-5,rev:204000,dms:245},
-  {wk:'Mar 16',rise:61,thrive:26,sp:55378,noi:-4,rev:213000,dms:257},
-  {wk:'Mar 23',rise:68,thrive:30,sp:55378,noi:-3,rev:220000,dms:270},
-  {wk:'Mar 30',rise:74,thrive:34,sp:65378,noi:-2,rev:228000,dms:257},
-  {wk:'Apr 7', rise:82,thrive:38,sp:65378,noi:-1,rev:235000,dms:257},
-  {wk:'Apr 17',rise:89,thrive:40,sp:65378,noi:2,rev:247844,dms:181},
+  {wk:'Feb 16',rise:32,thrive:14,sp:47503,noi:-8,rev:174000,dms:0,inq:0,email:0,traffic:0,vel:0,convos:0,proposals:0,rwdms:0,bych:0,spc:0,costs:242915,profit:-68915},
+  {wk:'Feb 23',rise:41,thrive:18,sp:47503,noi:-7,rev:185000,dms:0,inq:0,email:0,traffic:0,vel:0,convos:0,proposals:0,rwdms:0,bych:0,spc:0,costs:242915,profit:-57915},
+  {wk:'Mar 2', rise:49,thrive:20,sp:47503,noi:-6,rev:196000,dms:220,inq:0,email:0,traffic:0,vel:0,convos:0,proposals:0,rwdms:0,bych:0,spc:0,costs:242915,profit:-46915},
+  {wk:'Mar 9', rise:55,thrive:22,sp:55378,noi:-5,rev:204000,dms:245,inq:0,email:0,traffic:0,vel:0,convos:0,proposals:0,rwdms:0,bych:0,spc:0,costs:242915,profit:-38915},
+  {wk:'Mar 16',rise:61,thrive:26,sp:55378,noi:-4,rev:213000,dms:257,inq:0,email:0,traffic:0,vel:0,convos:0,proposals:0,rwdms:0,bych:0,spc:0,costs:242915,profit:-29915},
+  {wk:'Mar 23',rise:68,thrive:30,sp:55378,noi:-3,rev:220000,dms:270,inq:0,email:0,traffic:0,vel:0,convos:0,proposals:0,rwdms:0,bych:0,spc:0,costs:242915,profit:-22915},
+  {wk:'Mar 30',rise:74,thrive:34,sp:65378,noi:-2,rev:228000,dms:257,inq:0,email:0,traffic:0,vel:0,convos:0,proposals:0,rwdms:0,bych:0,spc:0,costs:242915,profit:-14915},
+  {wk:'Apr 7', rise:82,thrive:38,sp:65378,noi:-1,rev:235000,dms:257,inq:0,email:90,traffic:1818,vel:0,convos:0,proposals:0,rwdms:0,bych:17,spc:0,costs:242915,profit:-7915},
+  {wk:'Apr 17',rise:89,thrive:40,sp:65378,noi:2,rev:247844,dms:181,inq:0,email:90,traffic:1818,vel:0,convos:0,proposals:0,rwdms:0,bych:17,spc:0,costs:242915,profit:-2358},
 ];
+
 const prev=hist[hist.length-2];
 const last=hist[hist.length-1];
 
-function gs(v,t){const p=v/t;if(p>=.8)return{e:'\u{1F7E2}',c:'g'};if(p>=.5)return{e:'\u{1F7E1}',c:'a'};return{e:'\u{1F534}',c:'r'};}
-function delta(cur,prv,fmt){const d=cur-prv;if(!d)return '<span class="snap-delta neu">no change vs last week</span>';const cls=d>0?'pos':'neg';const sign=d>0?'+':'';return '<span class="snap-delta '+cls+'">'+sign+(fmt?fmt(Math.abs(d)):d)+' vs last week</span>';}
-function gd(){return{rise:+document.getElementById('f_rise').value||last.rise,thrive:+document.getElementById('f_thrive').value||last.thrive,sp:+document.getElementById('f_sponsor').value||last.sp,rev:+document.getElementById('f_rev').value||last.rev,noi:parseFloat((document.getElementById('f_noi').value||String(last.noi)).replace('%',''))||last.noi,dms:+document.getElementById('f_dms').value||last.dms,traffic:+document.getElementById('f_traffic').value||1818,convos:+document.getElementById('f_convos').value||0,convrate:document.getElementById('f_convrate').value||'',lpc:document.getElementById('f_lpc').value||'',profit:+document.getElementById('f_profit').value||-2358,proposals:+document.getElementById('f_proposals').value||0,email:+document.getElementById('f_email').value||90,vel:+document.getElementById('f_vel').value||0,bych:+document.getElementById('f_bych').value||17,inq:+document.getElementById('f_inq').value||0,rwdms:+document.getElementById('f_rwdms').value||0,spc:+document.getElementById('f_spc').value||0,closerate:document.getElementById('f_closerate').value||'',linkedin:document.getElementById('f_linkedin').value||'',costs:+document.getElementById('f_costs').value||242915};}
-function cs(inp,tgt){const v=parseFloat(inp.value)||0;const sid=inp.id.replace('f_','s_');const el=document.getElementById(sid);if(!el||!v)return;el.textContent=gs(v,tgt).e;}
-function ct(){const r=+document.getElementById('f_rise').value||0;const t=+document.getElementById('f_thrive').value||0;const tot=r+t;document.getElementById('f_tickets').value=tot||'';const el=document.getElementById('s_tickets');if(tot&&el)el.textContent=gs(tot,450).e;}
-function tog(id){const el=document.getElementById('sec-'+id);el.style.display=el.style.display==='none'?'block':'';}
+// Persistent storage
+function loadWeeks(){
+  try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');}catch(e){return[];}
+}
+function saveWeeks(weeks){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(weeks));}catch(e){}
+}
+
+function gs(v,t){const p=v/t;if(p>=.8)return{e:'🟢',c:'g'};if(p>=.5)return{e:'🟡',c:'a'};return{e:'🔴',c:'r'};}
+function delta(cur,prv,fmt){const d=cur-prv;if(!d)return'<span class="ch-neu">—</span>';const cls=d>0?'ch-pos':'ch-neg';const sign=d>0?'+':'';return'<span class="'+cls+'">'+sign+(fmt?fmt(Math.abs(d)):d)+'</span>';}
+function fK(v){return'$'+Math.round(v/1000)+'K';}
+
+function gd(){
+  return{
+    rise:+document.getElementById('f_rise').value||last.rise,
+    thrive:+document.getElementById('f_thrive').value||last.thrive,
+    sp:+document.getElementById('f_sponsor').value||last.sp,
+    rev:+document.getElementById('f_rev').value||last.rev,
+    noi:parseFloat((document.getElementById('f_noi').value||String(last.noi)).replace('%',''))||last.noi,
+    dms:+document.getElementById('f_dms').value||last.dms,
+    traffic:0,
+    convos:+document.getElementById('f_convos').value||0,
+    convrate:document.getElementById('f_convrate').value||'',
+    lpc:document.getElementById('f_lpc').value||'',
+    profit:+document.getElementById('f_profit').value||last.profit,
+    proposals:+document.getElementById('f_proposals').value||0,
+    email:0,
+    vel:+document.getElementById('f_vel').value||0,
+    bych:(+document.getElementById('f_ch_email').value||0)+(+document.getElementById('f_ch_direct').value||0)+(+document.getElementById('f_ch_ig').value||0),
+    ch_email:+document.getElementById('f_ch_email').value||0,
+    ch_direct:+document.getElementById('f_ch_direct').value||0,
+    ch_ig:+document.getElementById('f_ch_ig').value||0,
+    inq:+document.getElementById('f_inq').value||0,
+    rwdms:+document.getElementById('f_rwdms').value||0,
+    spc:+document.getElementById('f_spc').value||0,
+    closerate:document.getElementById('f_closerate').value||'',
+    linkedin:document.getElementById('f_linkedin').value||'',
+    costs:+document.getElementById('f_costs').value||last.costs,
+    wk:wkStr(),
+  };
+}
+
+function cs(inp,tgt){
+  const v=parseFloat(inp.value)||0;
+  const sid=inp.id.replace('f_','s_');
+  const sel=document.getElementById(sid);
+  if(!sel||!v)return;
+  sel.textContent=gs(v,tgt).e;
+}
+function ct(){
+  const r=+document.getElementById('f_rise').value||0;
+  const t=+document.getElementById('f_thrive').value||0;
+  const tot=r+t;
+  document.getElementById('f_tickets').value=tot||'';
+  const el=document.getElementById('s_tickets');
+  if(tot&&el)el.textContent=gs(tot,450).e;
+}
+function tog(id){
+  const el=document.getElementById('sec-'+id);
+  el.style.display=el.style.display==='none'?'block':'';
+}
+
+function submitWeek(){
+  const d=gd();
+  const weeks=loadWeeks();
+  // Check if this week already exists
+  const existing=weeks.findIndex(w=>w.wk===d.wk);
+  if(existing>=0){
+    if(!confirm('A submission for "'+d.wk+'" already exists. Overwrite it?'))return;
+    weeks[existing]=d;
+  } else {
+    weeks.push(d);
+  }
+  saveWeeks(weeks);
+  showSB('Week submitted and saved! View it in "This week vs last week" or Archive.','ok');
+  renderCompare();
+  renderArchive();
+}
+
+function getLastTwoWeeks(){
+  const weeks=loadWeeks();
+  const allWeeks=[...hist,...weeks];
+  if(allWeeks.length<2)return{curr:allWeeks[allWeeks.length-1]||null,prev:null};
+  return{
+    curr:allWeeks[allWeeks.length-1],
+    prev:allWeeks[allWeeks.length-2]
+  };
+}
+
+function renderCompare(){
+  const {curr,prev}=getLastTwoWeeks();
+  if(!curr){
+    document.getElementById('compareContent').innerHTML='<div class="empty-state">No data yet. Fill in the form and hit Submit week.</div>';
+    return;
+  }
+
+  const pw=prev||{};
+  const rows=[
+    {section:'P&L',items:[
+      {label:'Total revenue',curr:fK(curr.rev),prev:prev?fK(pw.rev):'-',raw:curr.rev,prawR:pw.rev,tgt:799403,fmt:fK},
+      {label:'NOI %',curr:curr.noi+'%',prev:prev?pw.noi+'%':'-',raw:curr.noi,prawR:pw.noi,tgt:70},
+      {label:'Costs (locked)',curr:fK(curr.costs),prev:prev?fK(pw.costs):'-',raw:null},
+      {label:'Breakeven',curr:fK(curr.profit),prev:prev?fK(pw.profit):'-',raw:null},
+    ]},
+    {section:'Revenue',items:[
+      {label:'Rise tickets',curr:curr.rise,prev:prev?pw.rise:'-',raw:curr.rise,prawR:pw.rise,tgt:350},
+      {label:'Thrive tickets',curr:curr.thrive,prev:prev?pw.thrive:'-',raw:curr.thrive,prawR:pw.thrive,tgt:100},
+      {label:'Total tickets',curr:curr.rise+curr.thrive,prev:prev?(pw.rise+pw.thrive):'-',raw:curr.rise+curr.thrive,prawR:pw.rise+pw.thrive,tgt:450},
+      {label:'Weekly velocity',curr:curr.vel||'—',prev:prev?(pw.vel||'—'):'-',raw:curr.vel,prawR:pw.vel,tgt:38},
+      {label:'Qualified convos',curr:curr.convos||'—',prev:prev?(pw.convos||'—'):'-',raw:curr.convos,prawR:pw.convos,tgt:10},
+      {label:'Conversion rate',curr:curr.convrate||'—',prev:prev?(pw.convrate||'—'):'-',raw:null},
+    ]},
+    {section:'Sponsors',items:[
+      {label:'Sponsorship closed',curr:fK(curr.sp),prev:prev?fK(pw.sp):'-',raw:curr.sp,prawR:pw.sp,tgt:225000,fmt:fK},
+      {label:'Active convos',curr:curr.spc?fK(curr.spc):'—',prev:prev?(pw.spc?fK(pw.spc):'—'):'-',raw:null},
+      {label:'Proposals sent',curr:curr.proposals||'—',prev:prev?(pw.proposals||'—'):'-',raw:curr.proposals,prawR:pw.proposals,tgt:30},
+    ]},
+    {section:'Marketing',items:[
+      {label:'Ads DMs generated',curr:curr.dms,prev:prev?pw.dms:'-',raw:curr.dms,prawR:pw.dms,tgt:300},
+      {label:'Page traffic',curr:curr.traffic?curr.traffic.toLocaleString():'—',prev:prev?(pw.traffic?pw.traffic.toLocaleString():'—'):'-',raw:curr.traffic,prawR:pw.traffic,tgt:425},
+      {label:'DMs / inquiries',curr:curr.inq||'—',prev:prev?(pw.inq||'—'):'-',raw:curr.inq,prawR:pw.inq,tgt:100},
+      {label:'Email clicks',curr:curr.email||'—',prev:prev?(pw.email||'—'):'-',raw:curr.email,prawR:pw.email,tgt:125},
+      {label:'Landing page conv.',curr:curr.lpc||'—',prev:prev?(pw.lpc||'—'):'-',raw:null},
+    ]},
+  ];
+
+  let html='<h2 style="font-family:\'DM Serif Display\',serif;font-size:1rem;font-weight:400;margin-bottom:12px;">'+curr.wk+' vs '+(prev?pw.wk:'no previous week')+'</h2>';
+  html+='<table class="comp-table"><thead><tr><th>Metric</th><th>This week ('+curr.wk+')</th><th>'+(prev?pw.wk:'Last week')+'</th><th>Change</th><th>Status</th></tr></thead><tbody>';
+
+  rows.forEach(section=>{
+    html+='<tr class="section-row"><td colspan="5">'+section.section+'</td></tr>';
+    section.items.forEach(item=>{
+      const st=item.raw&&item.tgt?gs(item.raw,item.tgt).e:'';
+      const ch=item.raw!=null&&item.prawR!=null?delta(item.raw,item.prawR,item.fmt):'<span class="ch-neu">—</span>';
+      html+='<tr><td>'+item.label+'</td><td style="font-weight:500;">'+item.curr+'</td><td style="color:#9E9B94;">'+item.prev+'</td><td>'+ch+'</td><td style="font-size:16px;">'+st+'</td></tr>';
+    });
+  });
+
+  html+='</tbody></table>';
+  document.getElementById('compareContent').innerHTML=html;
+}
+
+function renderArchive(){
+  const weeks=loadWeeks();
+
+  if(weeks.length===0){
+    document.getElementById('archiveList').innerHTML='<div class="empty-state">No archived weeks yet. Submit a week first to see progress charts and history.</div>';
+    document.getElementById('archiveDetail').innerHTML='';
+    return;
+  }
+
+  const labels=weeks.map(w=>w.wk);
+  const tc='#9E9B94';const gc='rgba(0,0,0,0.05)';
+  const base={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{color:tc,font:{size:10},boxWidth:10}}},scales:{x:{ticks:{color:tc,font:{size:9}},grid:{display:false}},y:{ticks:{color:tc,font:{size:9}},grid:{color:gc}}}};
+
+  let html='<p class="sec" style="margin-top:0;">Progress by owner</p>';
+
+  // Eric
+  html+='<div class="chart-card"><p class="chart-title" style="color:#C9547A;">Revenue — Eric Larocque</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div style="position:relative;height:140px;"><canvas id="arch_rise"></canvas></div><div style="position:relative;height:140px;"><canvas id="arch_thrive"></canvas></div></div></div>';
+
+  // Anita
+  html+='<div class="chart-card"><p class="chart-title" style="color:#C47A1A;">Sponsors — Anita Guerini</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div style="position:relative;height:140px;"><canvas id="arch_sp"></canvas></div><div style="position:relative;height:140px;"><canvas id="arch_proposals"></canvas></div></div></div>';
+
+  // Dayna
+  html+='<div class="chart-card"><p class="chart-title" style="color:#2563A8;">Marketing — Dayna Dorssers</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div style="position:relative;height:140px;"><canvas id="arch_dms"></canvas></div><div style="position:relative;height:140px;"><canvas id="arch_inq"></canvas></div></div></div>';
+
+  // Rachel
+  html+='<div class="chart-card"><p class="chart-title" style="color:#1A8A6E;">P&L — Rachel Dye</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div style="position:relative;height:140px;"><canvas id="arch_rev"></canvas></div><div style="position:relative;height:140px;"><canvas id="arch_noi"></canvas></div></div></div>';
+
+  // Archive list
+  html+='<p class="sec">All submitted weeks</p><div class="arch-list">';
+  [...weeks].reverse().forEach((w,i)=>{
+    const tk=(w.rise||0)+(w.thrive||0);
+    const idx=weeks.length-1-i;
+    html+='<div class="arch-item" onclick="showArchiveDetail('+idx+')">'+
+      '<div><div class="arch-week">'+w.wk+'</div><div class="arch-meta">'+tk+' tickets sold &nbsp;·&nbsp; '+fK(w.sp||0)+' sponsorship &nbsp;·&nbsp; NOI: '+(w.noi||0)+'%</div></div>'+
+      '<div style="color:#C9547A;font-size:12px;">View →</div>'+
+      '</div>';
+  });
+  html+='</div>';
+
+  document.getElementById('archiveList').innerHTML=html;
+  document.getElementById('archiveDetail').innerHTML='';
+
+  // Destroy existing archive charts
+  ['arch_rise','arch_thrive','arch_sp','arch_proposals','arch_dms','arch_inq','arch_rev','arch_noi'].forEach(k=>{if(charts[k])charts[k].destroy();});
+
+  // Eric charts
+  charts.arch_rise=new Chart(document.getElementById('arch_rise'),{type:'line',data:{labels,datasets:[{label:'Rise tickets',data:weeks.map(w=>w.rise||0),borderColor:'#C9547A',borderWidth:2,pointRadius:3,tension:0.3,fill:false}]},options:{...base,scales:{...base.scales,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>v+' tickets'}}}}});
+  charts.arch_thrive=new Chart(document.getElementById('arch_thrive'),{type:'line',data:{labels,datasets:[{label:'Thrive tickets',data:weeks.map(w=>w.thrive||0),borderColor:'#1A8A6E',borderWidth:2,pointRadius:3,tension:0.3,fill:false}]},options:base});
+
+  // Anita charts
+  charts.arch_sp=new Chart(document.getElementById('arch_sp'),{type:'line',data:{labels,datasets:[{label:'Sponsorship closed',data:weeks.map(w=>w.sp||0),borderColor:'#C47A1A',borderWidth:2,pointRadius:3,tension:0.3,fill:false}]},options:{...base,scales:{...base.scales,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>'$'+Math.round(v/1000)+'K'}}}}});
+  charts.arch_proposals=new Chart(document.getElementById('arch_proposals'),{type:'bar',data:{labels,datasets:[{label:'Proposals sent',data:weeks.map(w=>w.proposals||0),backgroundColor:'#C47A1A',borderRadius:3}]},options:base});
+
+  // Dayna charts
+  charts.arch_dms=new Chart(document.getElementById('arch_dms'),{type:'line',data:{labels,datasets:[{label:'Ads DMs',data:weeks.map(w=>w.dms||0),borderColor:'#2563A8',borderWidth:2,pointRadius:3,tension:0.3,fill:false}]},options:base});
+  charts.arch_inq=new Chart(document.getElementById('arch_inq'),{type:'line',data:{labels,datasets:[{label:'DMs / inquiries',data:weeks.map(w=>w.inq||0),borderColor:'#7F77DD',borderWidth:2,pointRadius:3,tension:0.3,fill:false}]},options:base});
+
+  // Rachel charts
+  charts.arch_rev=new Chart(document.getElementById('arch_rev'),{type:'line',data:{labels,datasets:[{label:'Total revenue',data:weeks.map(w=>w.rev||0),borderColor:'#1A8A6E',borderWidth:2,pointRadius:3,tension:0.3,fill:false}]},options:{...base,scales:{...base.scales,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>'$'+Math.round(v/1000)+'K'}}}}});
+  charts.arch_noi=new Chart(document.getElementById('arch_noi'),{type:'line',data:{labels,datasets:[{label:'NOI %',data:weeks.map(w=>w.noi||0),borderColor:'#C9547A',borderWidth:2,pointRadius:3,tension:0.3,fill:false},{label:'Target (70%)',data:weeks.map(()=>70),borderColor:'#9E9B94',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}]},options:{...base,scales:{...base.scales,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>v+'%'}}}}});
+}
+
+function showArchiveDetail(idx){
+  const all=[...hist,...loadWeeks()];
+  const w=all[idx];
+  if(!w)return;
+
+  const rows=[
+    {section:'P&L',items:[
+      {label:'Total revenue',val:fK(w.rev||0)},{label:'NOI %',val:(w.noi||0)+'%'},
+      {label:'Costs',val:fK(w.costs||0)},{label:'Breakeven',val:fK(w.profit||0)},
+    ]},
+    {section:'Revenue',items:[
+      {label:'Rise tickets',val:w.rise||0},{label:'Thrive tickets',val:w.thrive||0},
+      {label:'Total tickets',val:(w.rise||0)+(w.thrive||0)},{label:'Weekly velocity',val:w.vel||'—'},
+      {label:'Qualified convos',val:w.convos||'—'},{label:'Conversion rate',val:w.convrate||'—'},
+    ]},
+    {section:'Sponsors',items:[
+      {label:'Sponsorship closed',val:fK(w.sp||0)},{label:'Proposals sent',val:w.proposals||'—'},
+    ]},
+    {section:'Marketing',items:[
+      {label:'Ads DMs',val:w.dms||0},{label:'Page traffic',val:w.traffic?w.traffic.toLocaleString():'—'},
+      {label:'DMs / inquiries',val:w.inq||'—'},{label:'Email clicks',val:w.email||'—'},
+      {label:'Landing page conv.',val:w.lpc||'—'},
+    ]},
+  ];
+
+  let html='<div class="arch-detail on"><span class="arch-back" onclick="closeArchiveDetail()">← Back to list</span>';
+  html+='<h2 style="font-family:\'DM Serif Display\',serif;font-size:1rem;font-weight:400;margin-bottom:12px;">'+w.wk+'</h2>';
+  html+='<table class="comp-table"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody>';
+  rows.forEach(section=>{
+    html+='<tr class="section-row"><td colspan="2">'+section.section+'</td></tr>';
+    section.items.forEach(item=>{
+      html+='<tr><td>'+item.label+'</td><td style="font-weight:500;">'+item.val+'</td></tr>';
+    });
+  });
+  html+='</tbody></table></div>';
+  document.getElementById('archiveDetail').innerHTML=html;
+  document.getElementById('archiveList').style.display='none';
+}
+
+function closeArchiveDetail(){
+  document.getElementById('archiveList').style.display='';
+  document.getElementById('archiveDetail').innerHTML='';
+}
+
+function swTeam(v,btn){
+  document.querySelectorAll('.tview').forEach(e=>e.classList.remove('on'));
+  document.querySelectorAll('.team-tab').forEach(e=>e.classList.remove('on'));
+  document.getElementById('tview-'+v).classList.add('on');
+  btn.classList.add('on');
+  if(v==='compare')renderCompare();
+  if(v==='archive')renderArchive();
+}
 
 let charts={};
 function renderCEO(){
   const d=gd();const tk=d.rise+d.thrive;const ptk=prev.rise+prev.thrive;
   const rS=gs(d.rise,350);const tS=gs(d.thrive,100);const tkS=gs(tk,450);
   const spS=gs(d.sp,225000);const rvS=gs(d.rev,799403);
-  const noS=d.noi>0?gs(d.noi,70):{e:'\u{1F534}',c:'r'};
+  const noS=d.noi>0?gs(d.noi,70):{e:'🔴',c:'r'};
   const bc=s=>s.c==='g'?'tg':s.c==='a'?'ag':'rg';
-  const fK=v=>'$'+Math.round(v/1000)+'K';
+  function deltaHTML(cur,prv,fmt){const d=cur-prv;if(!d)return'<span class="snap-delta neu">no change</span>';const cls=d>0?'pos':'neg';const sign=d>0?'+':'';return'<span class="snap-delta '+cls+'">'+sign+(fmt?fmt(Math.abs(d)):d)+' vs last week</span>';}
 
   document.getElementById('snapGrid').innerHTML=
-    '<div class="snap '+bc(tkS)+'"><p class="snap-label">Total tickets</p><p class="snap-val '+tkS.c+'">'+tk+'</p><p class="snap-sub">of 450 target</p><p class="snap-status">'+tkS.e+' '+Math.round(tk/450*100)+'% to goal</p>'+delta(tk,ptk)+'</div>'+
-    '<div class="snap"><p class="snap-label">Rise tickets</p><p class="snap-val '+rS.c+'">'+d.rise+'</p><p class="snap-sub">of 350 target</p><p class="snap-status">'+rS.e+' '+Math.round(d.rise/350*100)+'% to goal</p>'+delta(d.rise,prev.rise)+'</div>'+
-    '<div class="snap"><p class="snap-label">Thrive tickets</p><p class="snap-val '+tS.c+'">'+d.thrive+'</p><p class="snap-sub">of 100 target</p><p class="snap-status">'+tS.e+' '+Math.round(d.thrive/100*100)+'% to goal</p>'+delta(d.thrive,prev.thrive)+'</div>'+
-    '<div class="snap '+bc(spS)+'"><p class="snap-label">Sponsorship closed</p><p class="snap-val '+spS.c+'">'+fK(d.sp)+'</p><p class="snap-sub">of $225K target</p><p class="snap-status">'+spS.e+' '+Math.round(d.sp/225000*100)+'% to goal</p>'+delta(d.sp,prev.sp,v=>fK(v))+'</div>'+
-    '<div class="snap '+bc(rvS)+'"><p class="snap-label">Total revenue</p><p class="snap-val '+rvS.c+'">'+fK(d.rev)+'</p><p class="snap-sub">of $799K target</p><p class="snap-status">'+rvS.e+' '+Math.round(d.rev/799403*100)+'% to goal</p>'+delta(d.rev,prev.rev,v=>fK(v))+'</div>'+
-    '<div class="snap '+bc(noS)+'"><p class="snap-label">NOI %</p><p class="snap-val '+noS.c+'">'+d.noi+'%</p><p class="snap-sub">target: 70%</p><p class="snap-status">'+noS.e+' '+(70-d.noi).toFixed(0)+'pts below target</p>'+delta(d.noi,prev.noi,v=>v+'pt')+'</div>';
+    '<div class="snap '+bc(tkS)+'"><p class="snap-label">Total tickets</p><p class="snap-val '+tkS.c+'">'+tk+'</p><p class="snap-sub">of 450 target</p><p class="snap-status">'+tkS.e+' '+Math.round(tk/450*100)+'% to goal</p>'+deltaHTML(tk,ptk)+'</div>'+
+    '<div class="snap"><p class="snap-label">Rise tickets</p><p class="snap-val '+rS.c+'">'+d.rise+'</p><p class="snap-sub">of 350 target</p><p class="snap-status">'+rS.e+' '+Math.round(d.rise/350*100)+'% to goal</p>'+deltaHTML(d.rise,prev.rise)+'</div>'+
+    '<div class="snap"><p class="snap-label">Thrive tickets</p><p class="snap-val '+tS.c+'">'+d.thrive+'</p><p class="snap-sub">of 100 target</p><p class="snap-status">'+tS.e+' '+Math.round(d.thrive/100*100)+'% to goal</p>'+deltaHTML(d.thrive,prev.thrive)+'</div>'+
+    '<div class="snap '+bc(spS)+'"><p class="snap-label">Sponsorship closed</p><p class="snap-val '+spS.c+'">'+fK(d.sp)+'</p><p class="snap-sub">of $225K target</p><p class="snap-status">'+spS.e+' '+Math.round(d.sp/225000*100)+'% to goal</p>'+deltaHTML(d.sp,prev.sp,fK)+'</div>'+
+    '<div class="snap '+bc(rvS)+'"><p class="snap-label">Total revenue</p><p class="snap-val '+rvS.c+'">'+fK(d.rev)+'</p><p class="snap-sub">of $799K target</p><p class="snap-status">'+rvS.e+' '+Math.round(d.rev/799403*100)+'% to goal</p>'+deltaHTML(d.rev,prev.rev,fK)+'</div>'+
+    '<div class="snap '+bc(noS)+'"><p class="snap-label">NOI %</p><p class="snap-val '+noS.c+'">'+d.noi+'%</p><p class="snap-sub">target: 70%</p><p class="snap-status">'+noS.e+' '+(70-d.noi).toFixed(0)+'pts below target</p>'+deltaHTML(d.noi,prev.noi,v=>v+'pt')+'</div>';
 
   document.getElementById('progBars').innerHTML=[
     {n:'Rise tickets',v:d.rise,t:350,c:'#C9547A'},
     {n:'Thrive tickets',v:d.thrive,t:100,c:'#1A8A6E'},
     {n:'Sponsorship closed',v:d.sp,t:225000,c:'#C47A1A'},
     {n:'Total revenue',v:d.rev,t:799403,c:'#2563A8'},
-  ].map(b=>{const p=Math.min(Math.round(b.v/b.t*100),100);return '<div class="prog-item"><div class="prog-head"><span class="prog-name">'+b.n+'</span><span class="prog-pct">'+p+'%</span></div><div class="prog-track"><div class="prog-fill" style="width:'+p+'%;background:'+b.c+';"></div></div></div>';}).join('');
+  ].map(b=>{const p=Math.min(Math.round(b.v/b.t*100),100);return'<div class="prog-item"><div class="prog-head"><span class="prog-name">'+b.n+'</span><span class="prog-pct">'+p+'%</span></div><div class="prog-track"><div class="prog-fill" style="width:'+p+'%;background:'+b.c+';"></div></div></div>';}).join('');
 
   renderCharts(d);
 }
 
 function renderCharts(d){
-  const allH=[...hist];
-  if(d.rise!==last.rise||d.thrive!==last.thrive||d.sp!==last.sp)allH.push({wk:'This wk',rise:d.rise,thrive:d.thrive,sp:d.sp,noi:d.noi,rev:d.rev,dms:d.dms});
+  const saved=loadWeeks();
+  const allH=[...hist,...saved];
+  const last2=hist[hist.length-1];
+  if(d.rise!==last2.rise||d.thrive!==last2.thrive)allH.push({wk:'This wk',rise:d.rise,thrive:d.thrive,sp:d.sp,noi:d.noi,rev:d.rev,dms:d.dms});
   const labels=allH.map(h=>h.wk);
   const tc='#9E9B94';const gc='rgba(0,0,0,0.05)';
   const base={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:9}},grid:{display:false}},y:{ticks:{color:tc,font:{size:9}},grid:{color:gc}}}};
@@ -247,7 +556,6 @@ function sw(v,btn){
 
 function wkStr(){
   const now=new Date();const day=now.getDay();
-  // Get start of current week (Monday), then subtract 7 days for last week
   const mon=new Date(now);mon.setDate(now.getDate()-((day+6)%7)-7);
   const sun=new Date(mon);sun.setDate(mon.getDate()+6);
   const f=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
@@ -261,34 +569,14 @@ function buildMsg(){
   const spS=gs(d.sp,225000);const rvS=gs(d.rev,799403);
   const dmS=d.dms>0?gs(d.dms,300):{e:'\u26aa'};
   const noS=d.noi>0?gs(d.noi,70):{e:'\u{1F534}'};
-  const fK=v=>'$'+Math.round(v/1000)+'K';
   const df=(cur,prv,fmt)=>{const diff=cur-prv;if(!diff)return'';return' ('+( diff>0?'+':'')+( fmt?fmt(Math.abs(diff)):diff)+')';};
   const au=m=>'\u26aa _'+m+': awaiting update_';
-
   return '📊 PSP Weekly Update — Week of '+wkStr()+'\n\n'+
-    '💰 P&L\n'+
-    rvS.e+' Revenue: '+fK(d.rev)+' of $799K'+df(d.rev,prev.rev,fK)+'\n'+
-    noS.e+' NOI: '+d.noi+'% of 70% target'+df(d.noi,prev.noi,v=>v+'pt')+'\n\n'+
-    '🎟️ Revenue\n'+
-    tkS.e+' Total tickets: '+tk+' of 450'+df(tk,ptk)+'\n'+
-    rS.e+' Rise: '+d.rise+' of 350'+df(d.rise,prev.rise)+'\n'+
-    tS.e+' Thrive: '+d.thrive+' of 100'+df(d.thrive,prev.thrive)+'\n'+
-    (d.vel?gs(d.vel,38).e+' Velocity: '+d.vel+'/wk of 38':au('velocity'))+'\n'+
-    (d.convos?gs(d.convos,10).e+' Qualified convos: '+d.convos+'/day of 10':au('qualified convos'))+'\n'+
-    (d.convrate?'\u26aa Conversion rate: '+d.convrate:au('conversion rate'))+'\n\n'+
-    '🤝 Sponsors\n'+
-    spS.e+' Closed: '+fK(d.sp)+' of $225K'+df(d.sp,prev.sp,fK)+'\n'+
-    (d.spc?gs(d.spc,100000).e+' Active convos: '+fK(d.spc)+' of $100K':au('active conversations'))+'\n'+
-    (d.proposals?gs(d.proposals,30).e+' Proposals sent: '+d.proposals+' of 30':au('proposals sent'))+'\n\n'+
-    '📣 Marketing\n'+
-    dmS.e+' Ads DMs: '+d.dms+' of 300'+df(d.dms,prev.dms)+'\n'+
-    (d.traffic?gs(d.traffic,425).e+' Page traffic: '+d.traffic.toLocaleString()+' of 425':au('page traffic'))+'\n'+
-    (d.inq?gs(d.inq,100).e+' DMs / inquiries: '+d.inq+' of 100':au('DMs / inquiries'))+'\n'+
-    (d.email?gs(d.email,125).e+' Email clicks: '+d.email+' of 125':au('email clicks'))+'\n'+
-    (d.lpc?'\u26aa Landing page conversion: '+d.lpc:au('landing page conversion'))+'\n\n'+
-    '🟢 on track (80%+)\n'+
-    '🟡 needs attention (50-79%)\n'+
-    '🔴 off track (<50%)\n\n'+
+    '💰 P&L\n'+rvS.e+' Revenue: '+fK(d.rev)+' of $799K'+df(d.rev,prev.rev,fK)+'\n'+noS.e+' NOI: '+d.noi+'% of 70% target'+df(d.noi,prev.noi,v=>v+'pt')+'\n\n'+
+    '🎟️ Revenue\n'+tkS.e+' Total tickets: '+tk+' of 450'+df(tk,ptk)+'\n'+rS.e+' Rise: '+d.rise+' of 350'+df(d.rise,prev.rise)+'\n'+tS.e+' Thrive: '+d.thrive+' of 100'+df(d.thrive,prev.thrive)+'\n'+(d.vel?gs(d.vel,38).e+' Velocity: '+d.vel+'/wk of 38':au('velocity'))+'\n'+(d.convos?gs(d.convos,10).e+' Qualified convos: '+d.convos+'/day of 10':au('qualified convos'))+'\n'+(d.convrate?'\u26aa Conversion rate: '+d.convrate:au('conversion rate'))+'\n\n'+
+    '🤝 Sponsors\n'+spS.e+' Closed: '+fK(d.sp)+' of $225K'+df(d.sp,prev.sp,fK)+'\n'+(d.spc?gs(d.spc,100000).e+' Active convos: '+fK(d.spc)+' of $100K':au('active conversations'))+'\n'+(d.proposals?gs(d.proposals,30).e+' Proposals sent: '+d.proposals+' of 30':au('proposals sent'))+'\n\n'+
+    '📣 Marketing\n'+dmS.e+' Ads DMs: '+d.dms+' of 300'+df(d.dms,prev.dms)+'\n'+(d.traffic?gs(d.traffic,425).e+' Page traffic: '+d.traffic.toLocaleString()+' of 425':au('page traffic'))+'\n'+(d.inq?gs(d.inq,100).e+' DMs / inquiries: '+d.inq+' of 100':au('DMs / inquiries'))+'\n'+(d.email?gs(d.email,125).e+' Email clicks: '+d.email+' of 125':au('email clicks'))+'\n'+(d.lpc?'\u26aa Landing page conversion: '+d.lpc:au('landing page conversion'))+'\n\n'+
+    '🟢 on track (80%+)\n🟡 needs attention (50-79%)\n🔴 off track (<50%)\n\n'+
     'If anything shows awaiting update, please drop your numbers in this thread by EOD Monday 💗';
 }
 
@@ -310,6 +598,13 @@ async function copyForSlack(){
   setTimeout(()=>{btn.textContent='Copy for Slack';btn.style.background='#C9547A';},3000);
 }
 
+function csChannel(valId, tgtId, statusId){
+  const v=parseFloat(document.getElementById(valId).value)||0;
+  const t=parseFloat(document.getElementById(tgtId).value)||0;
+  const sel=document.getElementById(statusId);
+  if(!sel||!v||!t)return;
+  sel.textContent=gs(v,t).e;
+}
 function showSB(msg,type){
   const el=document.getElementById('sb');
   el.textContent=msg;el.className='sb on '+type;
@@ -323,6 +618,32 @@ document.getElementById('daysOut').textContent=Math.ceil((ed-now)/864e5);
 document.getElementById('wkNote').textContent='Week of '+wkStr()+' — please update your section by Sunday 8pm';
 document.getElementById('wkNote2').textContent=wkStr();
 renderCEO();
+
+function initStatuses(){
+  const defaults=[
+    {id:'f_rise',val:89,tgt:20.6},{id:'f_thrive',val:40,tgt:4.9},
+    {id:'f_vel',val:0,tgt:38},{id:'f_convos',val:0,tgt:10},
+    {id:'f_sponsor',val:65378,tgt:225000},{id:'f_spc',val:0,tgt:100000},
+    {id:'f_proposals',val:0,tgt:30},{id:'f_inq',val:0,tgt:100},
+    {id:'f_dms',val:181,tgt:300},{id:'f_rwdms',val:0,tgt:25},
+    {id:'f_rev',val:247844,tgt:799403},
+    {id:'f_costs',val:242915,tgt:242915},{id:'f_profit',val:-2358,tgt:0},
+  ];
+  defaults.forEach(f=>{
+    const el=document.getElementById(f.id);
+    if(!el)return;
+    if(!el.value&&f.val)el.value=f.val;
+    const v=parseFloat(el.value)||0;if(!v)return;
+    const sel=document.getElementById(f.id.replace('f_','s_'));
+    if(sel)sel.textContent=gs(v,f.tgt).e;
+  });
+  const noiel=document.getElementById('f_noi');
+  if(noiel&&!noiel.value)noiel.value='2%';
+  const noiSel=document.getElementById('s_noi');
+  if(noiSel)noiSel.textContent=gs(2,70).e;
+  ct();
+}
+initStatuses();
 </script>
 </body>
 </html>
