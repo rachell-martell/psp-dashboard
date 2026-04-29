@@ -228,7 +228,34 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:#1C1B18;background:#FAFAF9
 
 <script>
 const SLACK='https://hooks.slack.com/services/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';
-const STORAGE_KEY='psp_weeks_v1';
+const SB_URL='https://mbwotkpagwylakvjyshp.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1id290a3BhZ3d5bGFrdmp5c2hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0NzY2OTUsImV4cCI6MjA5MzA1MjY5NX0.zDyqFXV-e6YDzjD8q0Veze7Ch3BYotPVr2t8mOXL6-c';
+
+async function sbFetch(path,opts={}){
+  const res=await fetch(SB_URL+'/rest/v1/'+path,{
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=representation',...(opts.headers||{})},
+    ...opts
+  });
+  if(!res.ok){const t=await res.text();throw new Error(t);}
+  return res.json();
+}
+
+async function loadWeeks(){
+  try{
+    const data=await sbFetch('weekly_updates?order=submitted_at.asc&select=*');
+    return (data||[]).map(r=>({wk:r.week,rise:r.rise,thrive:r.thrive,sp:r.sponsor,rev:r.rev,noi:parseFloat(r.noi)||0,dms:r.dms,inq:r.inq,vel:r.vel,convos:r.convos,convrate:r.convrate,proposals:r.proposals,spc:r.spc,lpc:r.lpc,profit:r.profit,costs:r.costs,rwdms:r.rwdms,ch_email:r.ch_email,ch_direct:r.ch_direct,ch_ig:r.ch_ig}));
+  }catch(e){console.error('Load error',e);return[];}
+}
+
+async function saveWeekToSupabase(d){
+  const existing=await sbFetch('weekly_updates?week=eq.'+encodeURIComponent(d.wk)+'&select=id');
+  const payload={week:d.wk,rise:d.rise||0,thrive:d.thrive||0,sponsor:d.sp||0,rev:d.rev||0,noi:String(d.noi||0),dms:d.dms||0,inq:d.inq||0,vel:d.vel||0,convos:d.convos||0,convrate:d.convrate||'',proposals:d.proposals||0,spc:d.spc||0,lpc:d.lpc||'',profit:d.profit||0,costs:d.costs||0,rwdms:d.rwdms||0,ch_email:d.ch_email||0,ch_direct:d.ch_direct||0,ch_ig:d.ch_ig||0,submitted_at:new Date().toISOString()};
+  if(existing&&existing.length>0){
+    await sbFetch('weekly_updates?week=eq.'+encodeURIComponent(d.wk),{method:'PATCH',body:JSON.stringify(payload)});
+  }else{
+    await sbFetch('weekly_updates',{method:'POST',body:JSON.stringify(payload)});
+  }
+}
 
 const hist=[
   {wk:'Feb 16',rise:32,thrive:14,sp:47503,noi:-8,rev:174000,dms:0,inq:0,email:0,traffic:0,vel:0,convos:0,proposals:0,rwdms:0,bych:0,spc:0,costs:242915,profit:-68915},
@@ -246,12 +273,7 @@ const prev=hist[hist.length-2];
 const last=hist[hist.length-1];
 
 // Persistent storage
-function loadWeeks(){
-  try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');}catch(e){return[];}
-}
-function saveWeeks(weeks){
-  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(weeks));}catch(e){}
-}
+// loadWeeks and saveWeekToSupabase defined above
 
 function gs(v,t){const p=v/t;if(p>=.8)return{e:'🟢',c:'g'};if(p>=.5)return{e:'🟡',c:'a'};return{e:'🔴',c:'r'};}
 function delta(cur,prv,fmt){const d=cur-prv;if(!d)return'<span class="ch-neu">—</span>';const cls=d>0?'ch-pos':'ch-neg';const sign=d>0?'+':'';return'<span class="'+cls+'">'+sign+(fmt?fmt(Math.abs(d)):d)+'</span>';}
@@ -307,25 +329,22 @@ function tog(id){
   el.style.display=el.style.display==='none'?'block':'';
 }
 
-function submitWeek(){
+async function submitWeek(){
   const d=gd();
-  const weeks=loadWeeks();
-  // Check if this week already exists
-  const existing=weeks.findIndex(w=>w.wk===d.wk);
-  if(existing>=0){
-    if(!confirm('A submission for "'+d.wk+'" already exists. Overwrite it?'))return;
-    weeks[existing]=d;
-  } else {
-    weeks.push(d);
+  showSB('Saving to database...','ld');
+  try{
+    await saveWeekToSupabase(d);
+    showSB('Week submitted and saved! View in This week vs last week or Archive.','ok');
+    await renderCompare();
+    await renderArchive();
+  }catch(e){
+    showSB('Error saving: '+e.message,'err');
+    console.error(e);
   }
-  saveWeeks(weeks);
-  showSB('Week submitted and saved! View it in "This week vs last week" or Archive.','ok');
-  renderCompare();
-  renderArchive();
 }
 
-function getLastTwoWeeks(){
-  const weeks=loadWeeks();
+async function getLastTwoWeeks(){
+  const weeks=await loadWeeks();
   const allWeeks=[...hist,...weeks];
   if(allWeeks.length<2)return{curr:allWeeks[allWeeks.length-1]||null,prev:null};
   return{
@@ -334,8 +353,8 @@ function getLastTwoWeeks(){
   };
 }
 
-function renderCompare(){
-  const {curr,prev}=getLastTwoWeeks();
+async function renderCompare(){
+  const {curr,prev}=await getLastTwoWeeks();
   if(!curr){
     document.getElementById('compareContent').innerHTML='<div class="empty-state">No data yet. Fill in the form and hit Submit week.</div>';
     return;
@@ -387,8 +406,8 @@ function renderCompare(){
   document.getElementById('compareContent').innerHTML=html;
 }
 
-function renderArchive(){
-  const weeks=loadWeeks();
+async function renderArchive(){
+  const weeks=await loadWeeks();
 
   if(weeks.length===0){
     document.getElementById('archiveList').innerHTML='<div class="empty-state">No archived weeks yet. Submit a week first to see progress charts and history.</div>';
@@ -449,8 +468,9 @@ function renderArchive(){
   charts.arch_noi=new Chart(document.getElementById('arch_noi'),{type:'line',data:{labels,datasets:[{label:'NOI %',data:weeks.map(w=>w.noi||0),borderColor:'#C9547A',borderWidth:2,pointRadius:3,tension:0.3,fill:false},{label:'Target (70%)',data:weeks.map(()=>70),borderColor:'#9E9B94',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}]},options:{...base,scales:{...base.scales,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>v+'%'}}}}});
 }
 
-function showArchiveDetail(idx){
-  const all=[...hist,...loadWeeks()];
+async function showArchiveDetail(idx){
+  const weeks=await loadWeeks();
+  const all=[...hist,...weeks];
   const w=all[idx];
   if(!w)return;
 
@@ -500,6 +520,7 @@ function swTeam(v,btn){
   btn.classList.add('on');
   if(v==='compare')renderCompare();
   if(v==='archive')renderArchive();
+
 }
 
 let charts={};
@@ -529,8 +550,8 @@ function renderCEO(){
   renderCharts(d);
 }
 
-function renderCharts(d){
-  const saved=loadWeeks();
+async function renderCharts(d){
+  const saved=await loadWeeks();
   const allH=[...hist,...saved];
   const last2=hist[hist.length-1];
   if(d.rise!==last2.rise||d.thrive!==last2.thrive)allH.push({wk:'This wk',rise:d.rise,thrive:d.thrive,sp:d.sp,noi:d.noi,rev:d.rev,dms:d.dms});
@@ -575,7 +596,7 @@ function buildMsg(){
     '💰 P&L\n'+rvS.e+' Revenue: '+fK(d.rev)+' of $799K'+df(d.rev,prev.rev,fK)+'\n'+noS.e+' NOI: '+d.noi+'% of 70% target'+df(d.noi,prev.noi,v=>v+'pt')+'\n\n'+
     '🎟️ Revenue\n'+tkS.e+' Total tickets: '+tk+' of 450'+df(tk,ptk)+'\n'+rS.e+' Rise: '+d.rise+' of 350'+df(d.rise,prev.rise)+'\n'+tS.e+' Thrive: '+d.thrive+' of 100'+df(d.thrive,prev.thrive)+'\n'+(d.vel?gs(d.vel,38).e+' Velocity: '+d.vel+'/wk of 38':au('velocity'))+'\n'+(d.convos?gs(d.convos,10).e+' Qualified convos: '+d.convos+'/day of 10':au('qualified convos'))+'\n'+(d.convrate?'\u26aa Conversion rate: '+d.convrate:au('conversion rate'))+'\n\n'+
     '🤝 Sponsors\n'+spS.e+' Closed: '+fK(d.sp)+' of $225K'+df(d.sp,prev.sp,fK)+'\n'+(d.spc?gs(d.spc,100000).e+' Active convos: '+fK(d.spc)+' of $100K':au('active conversations'))+'\n'+(d.proposals?gs(d.proposals,30).e+' Proposals sent: '+d.proposals+' of 30':au('proposals sent'))+'\n\n'+
-    '📣 Marketing\n'+dmS.e+' Ads DMs: '+d.dms+' of 300'+df(d.dms,prev.dms)+'\n'+(d.traffic?gs(d.traffic,425).e+' Page traffic: '+d.traffic.toLocaleString()+' of 425':au('page traffic'))+'\n'+(d.inq?gs(d.inq,100).e+' DMs / inquiries: '+d.inq+' of 100':au('DMs / inquiries'))+'\n'+(d.email?gs(d.email,125).e+' Email clicks: '+d.email+' of 125':au('email clicks'))+'\n'+(d.lpc?'\u26aa Landing page conversion: '+d.lpc:au('landing page conversion'))+'\n\n'+
+    '📣 Marketing\n'+dmS.e+' Ads DMs: '+d.dms+' of 300'+df(d.dms,prev.dms)+'\n'+(d.inq?gs(d.inq,100).e+' DMs / inquiries: '+d.inq+' of 100':au('DMs / inquiries'))+'\n'+(d.lpc?'\u26aa Website conversion rate: '+d.lpc:au('website conversion rate'))+'\n'+(d.ch_email?'\u26aa Tickets by channel — Email: '+d.ch_email:au('tickets by channel — Email'))+'\n'+(d.ch_direct?'\u26aa Tickets by channel — Direct: '+d.ch_direct:au('tickets by channel — Direct'))+'\n'+(d.ch_ig?'\u26aa Tickets by channel — Instagram: '+d.ch_ig:au('tickets by channel — Instagram'))+'\n\n'+
     '🟢 on track (80%+)\n🟡 needs attention (50-79%)\n🔴 off track (<50%)\n\n'+
     'If anything shows awaiting update, please drop your numbers in this thread by EOD Monday 💗';
 }
