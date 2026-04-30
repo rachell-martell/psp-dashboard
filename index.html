@@ -89,6 +89,13 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:#1C1B18;background:#FAFAF9
 .arch-detail.on{display:block;}
 .arch-back{font-size:12px;color:#C9547A;cursor:pointer;margin-bottom:12px;display:inline-block;}
 .empty-state{text-align:center;padding:3rem 1rem;color:#9E9B94;font-size:13px;}
+/* TOAST POPUP */
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);background:white;border-radius:14px;padding:20px 28px;text-align:center;font-size:14px;font-weight:500;color:#1C1B18;box-shadow:0 20px 60px rgba(0,0,0,0.18);z-index:9999;opacity:0;pointer-events:none;transition:all .25s ease;min-width:240px;}
+.toast.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto;}
+.toast .toast-icon{font-size:32px;margin-bottom:8px;}
+.toast .toast-msg{font-size:13px;color:#5C5A55;margin-top:4px;font-weight:400;}
+.toast-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.15);z-index:9998;opacity:0;pointer-events:none;transition:opacity .25s;}
+.toast-overlay.show{opacity:1;}
 </style>
 </head>
 <body>
@@ -627,9 +634,24 @@ function csChannel(valId, tgtId, statusId){
   sel.textContent=gs(v,t).e;
 }
 function showSB(msg,type){
+  // Keep the small bar too for inline feedback
   const el=document.getElementById('sb');
-  el.textContent=msg;el.className='sb on '+type;
-  setTimeout(()=>el.className='sb',5000);
+  if(el){el.textContent=msg;el.className='sb on '+type;setTimeout(()=>el.className='sb',5000);}
+  // Show centered toast
+  const icons={ok:'✅',err:'❌',ld:'⏳'};
+  const titles={ok:'Done!',err:'Oops!',ld:'Saving...'};
+  document.getElementById('toastIcon').textContent=icons[type]||'ℹ️';
+  document.getElementById('toastTitle').textContent=titles[type]||'';
+  document.getElementById('toastMsg').textContent=msg;
+  document.getElementById('toast').classList.add('show');
+  document.getElementById('toastOverlay').classList.add('show');
+  const dur=type==='ld'?0:3000;
+  if(dur){setTimeout(()=>{document.getElementById('toast').classList.remove('show');document.getElementById('toastOverlay').classList.remove('show');},dur);}
+}
+
+function hideToast(){
+  document.getElementById('toast').classList.remove('show');
+  document.getElementById('toastOverlay').classList.remove('show');
 }
 
 const now=new Date();
@@ -638,6 +660,33 @@ const ed=new Date('2026-07-09');
 document.getElementById('daysOut').textContent=Math.ceil((ed-now)/864e5);
 document.getElementById('wkNote').textContent='Week of '+wkStr()+' — please update your section by Sunday 8pm';
 document.getElementById('wkNote2').textContent=wkStr();
+// On page load fetch latest week from Supabase and pre-fill fields
+async function loadLatestWeek(){
+  try{
+    const weeks=await loadWeeks();
+    if(!weeks||weeks.length===0)return;
+    const latest=weeks[weeks.length-1];
+    const fieldMap={
+      f_rise:latest.rise,f_thrive:latest.thrive,f_sponsor:latest.sp,
+      f_rev:latest.rev,f_noi:latest.noi,f_dms:latest.dms,f_inq:latest.inq,
+      f_vel:latest.vel,f_convos:latest.convos,f_convrate:latest.convrate,
+      f_proposals:latest.proposals,f_spc:latest.spc,f_lpc:latest.lpc,
+      f_profit:latest.profit,f_costs:latest.costs,f_rwdms:latest.rwdms,
+      f_ch_email:latest.ch_email,f_ch_direct:latest.ch_direct,f_ch_ig:latest.ch_ig,
+    };
+    Object.entries(fieldMap).forEach(([id,val])=>{
+      const el=document.getElementById(id);
+      if(el&&val!=null&&val!==''&&val!==0)el.value=val;
+    });
+    ct();
+    renderCEO();
+    showSB('Loaded latest week: '+latest.wk,'ok');
+  }catch(e){
+    console.error('Could not load latest week',e);
+  }
+}
+loadLatestWeek();
+
 renderCEO();
 
 function initStatuses(){
@@ -666,5 +715,11 @@ function initStatuses(){
 }
 initStatuses();
 </script>
+<div class="toast-overlay" id="toastOverlay"></div>
+<div class="toast" id="toast">
+  <div class="toast-icon" id="toastIcon"></div>
+  <div id="toastTitle"></div>
+  <div class="toast-msg" id="toastMsg"></div>
+</div>
 </body>
 </html>
